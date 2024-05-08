@@ -55,6 +55,6 @@ void testList() {
 
 int main() {
   testQueue();
-  //testStack();
-  //testList();
+  testStack();
+  testList();
 }

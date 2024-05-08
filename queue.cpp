@@ -18,9 +18,8 @@ int Queue::pop() {
     throw "Queue is empty";
   }
 
-  --this->size;
   int val = this->peek();
-  LinkedList::remove(this->size);
+  LinkedList::remove(--this->size);
   return val;
 }
 
