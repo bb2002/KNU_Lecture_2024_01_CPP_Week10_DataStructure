@@ -1,8 +1,7 @@
 #include "queue.h"
 
 void Queue::push(int val) {
-  ++this->size;
-  LinkedList::insert(0, val);
+  LinkedList::insert(this->size++, val);
 }
 
 int Queue::peek() {
@@ -10,7 +9,7 @@ int Queue::peek() {
     throw "Queue is empty";
   }
 
-  return LinkedList::get(this->size - 1);
+  return LinkedList::get(0);
 }
 
 int Queue::pop() {
@@ -19,7 +18,7 @@ int Queue::pop() {
   }
 
   int val = this->peek();
-  LinkedList::remove(--this->size);
+  LinkedList::remove(0);
   return val;
 }
 
@@ -27,5 +26,3 @@ Queue& Queue::operator+=(int val) {
   this->push(val);
   return *this;
 }
-
-// TODO: Queue 클래스 구현 작성

@@ -3,19 +3,20 @@
 
 LinkedList::LinkedList() {
   this->head_ = nullptr;
+  this->size_ = 0;
 }
 
 LinkedList::~LinkedList() {
   Node* current = this->head_;
-  Node* removed = this->head_;
+  Node* removed = nullptr;
   while (true) {
     if (current == nullptr) {
       break;
     }
     
+    removed = current;
     current = current->next_;
     delete removed;
-    removed = current;
   }
 }
 
@@ -23,7 +24,7 @@ void LinkedList::print() {
   for (Node* p = this->head_; p != nullptr; p = p->next_) {
     std::cout << p->value_;
     if (p->next_ != nullptr) {
-      std::cout << " -> ";
+      std::cout << " ";
     }
   }
 
@@ -53,6 +54,10 @@ void LinkedList::insert(int index, int value) {
 int LinkedList::get(int index) {
   Node* current = this->head_;
   for (int i = 0; i < index; ++i) {
+    if (current == nullptr) {
+      throw "Index out of range";
+    }
+
     current = current->next_;
   }
 
@@ -71,6 +76,10 @@ void LinkedList::remove(int index) {
   } else {
     Node* before = this->head_;
     for (int i = 1; i < index; ++i) {
+      if (before == nullptr) {
+      throw "Index out of range";
+    }
+
       before = before->next_;
     }
 

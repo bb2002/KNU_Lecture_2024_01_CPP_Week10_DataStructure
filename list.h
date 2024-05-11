@@ -8,6 +8,10 @@ class List : public LinkedList {
 
   public:
   void insert(int, int);
+
+  int get(int);
+
+  void remove(int);
 };
 
 #endif
